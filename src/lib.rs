@@ -12,10 +12,12 @@ unsafe impl<T: ?Sized> Sync for SharedMut<T> { }
 unsafe impl<T: ?Sized> Send for SharedMut<T> { }
 
 impl<T: ?Sized> SharedMut<T> {
+    #[inline]
     pub const fn new(ptr: *mut T) -> Self {
         Self(ptr)
     }
 
+    #[inline]
     pub const fn get(&self) -> *mut T {
         self.0
     }
@@ -24,12 +26,14 @@ impl<T: ?Sized> SharedMut<T> {
 impl<T: ?Sized> Deref for SharedMut<T> {
     type Target = *mut T;
 
+    #[inline]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
 
 impl<T: ?Sized> DerefMut for SharedMut<T> {
+    #[inline]
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
     }
