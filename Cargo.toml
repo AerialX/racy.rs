@@ -8,3 +8,6 @@ categories = ["no-std"]
 
 [dependencies]
 const-default = { version = "^0.1.0", git = "https://github.com/AerialX/const-default.rs", optional = true }
+
+[features]
+unstable = []
